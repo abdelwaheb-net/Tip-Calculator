@@ -19,9 +19,15 @@ else
 }
     
     $("#tipAmount").text(amount.toFixed(2)+ " €");
+    totalamount = Number(bill) + Number(amount);
+    
+    $("#totalAmount").text(totalamount.toFixed(2) + " €");
+
+    parpersonne = Number(totalamount) / Number(people);
+
+    $("#perPerson").text(parpersonne.toFixed(2) + " €");
 
   });
-
   $("#tip").on("change", function () {
     if($("#tip").val()=='custom'){
       $("#customTip").show();
@@ -30,4 +36,13 @@ else
       $("#customTip").hide();
     }
   });
+    $("#resetBtn").on("click", function () {
+      console.log("press reinitialise");
+      $("#bill").val("");
+      $("#tip").val("10");
+      $("#customTip").val("").hide();
+      $("#tipAmount").text("0.00 €");
+      $("#totalAmount").text("0.00 €");
+      $("#perPerson").text("0.00 €");
+    });  
 });
